@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "jortk.automatic-garage-reorder",
+  "name": "Automatic Garage Order",
+  "version": "1.1.0",
+  "author": "jor",
+  "description": "Reorders the pitlane garages in Career Mode and Grand Prix each season according to Constructors' Championship merit.",
+  "license": "MIT",
+  "category": "career",
+  "repository": "",
+  "icon": "icons/pitlane.png",
+  "kind": [
+    "native"
+  ],
+  "compat": {
+    "game": "f1_25",
+    "game_builds": [
+      ">=25251167"
+    ],
+    "launcher": ">=1.5.13"
+  },
+  "requires": [
+    {
+      "id": "swofty.core",
+      "version": ">=0.2.13"
+    }
+  ],
+  "options": [
+    {
+      "id": "garage_order_mode",
+      "type": "choice",
+      "label": "Pitlane Garage Order",
+      "description": "Choose how pitlane garages are assigned: Championship standings (merit), Inverted (P1 gets last garage), or Randomized.",
+      "default": "standings",
+      "values": [
+        { "value": "standings", "label": "Championship standings" },
+        { "value": "reverse", "label": "Inverted standings" },
+        { "value": "random", "label": "Randomized" }
+      ],
+      "binds": "native"
+    },
+    {
+      "id": "apply_in_season_1",
+      "type": "toggle",
+      "label": "Apply in Season 1",
+      "description": "Apply realistic 2024/2025 constructor standings in Season 1 (McLaren in Garage 1, Ferrari in Garage 2, etc.).",
+      "default": true,
+      "binds": "native"
+    },
+    {
+      "id": "apply_in_grand_prix",
+      "type": "toggle",
+      "label": "Apply in Grand Prix",
+      "description": "Apply pitlane garage reordering in Grand Prix mode as well as Career Mode.",
+      "default": true,
+      "binds": "native"
+    },
+    {
+      "id": "reverse_order",
+      "type": "toggle",
+      "label": "Legacy: Reverse order",
+      "description": "Legacy toggle: Inverts the pitlane garage order (equivalent to selecting Inverted standings).",
+      "default": false,
+      "binds": "native"
+    },
+    {
+      "id": "verbose",
+      "type": "toggle",
+      "label": "Verbose logging",
+      "description": "Log team names and assigned pitlane garage slots to swofty/loader.log.",
+      "default": true,
+      "binds": "native"
+    }
+  ],
+  "operations": {
+    "native": [
+      {
+        "dll": "native/pitlane_garage_order.dll"
+      }
+    ]
+  }
+}
