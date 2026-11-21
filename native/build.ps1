@@ -66,7 +66,7 @@ if (Test-Path $OutZip)   { Remove-Item -Force $OutZip }
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
-$PackageEntries = @("LICENSE", "README.md", "swofty.json", "native/pitlane_garage_order.dll")
+$PackageEntries = @("LICENSE", "README.md", "swofty.json", "icons/pitlane.png", "native/pitlane_garage_order.dll")
 
 foreach ($OutFile in @($OutAddon, $OutZip)) {
     $Zip = [System.IO.Compression.ZipFile]::Open($OutFile, [System.IO.Compression.ZipArchiveMode]::Create)
@@ -95,10 +95,14 @@ foreach ($Target in $DeployTargets) {
     if (Test-Path (Split-Path -Parent $Target)) {
         try {
             New-Item -ItemType Directory -Force -Path (Join-Path $Target "native") | Out-Null
+            New-Item -ItemType Directory -Force -Path (Join-Path $Target "icons") | Out-Null
             Copy-Item -Force "$PSScriptRoot\pitlane_garage_order.dll" (Join-Path $Target "native\pitlane_garage_order.dll") -ErrorAction Stop
             Copy-Item -Force "$AddonRoot\swofty.json" (Join-Path $Target "swofty.json") -ErrorAction Stop
             Copy-Item -Force "$AddonRoot\README.md" (Join-Path $Target "README.md") -ErrorAction SilentlyContinue
             Copy-Item -Force "$AddonRoot\LICENSE" (Join-Path $Target "LICENSE") -ErrorAction SilentlyContinue
+            if (Test-Path "$AddonRoot\icons\pitlane.png") {
+                Copy-Item -Force "$AddonRoot\icons\pitlane.png" (Join-Path $Target "icons\pitlane.png") -ErrorAction SilentlyContinue
+            }
             Copy-Item -Force $OutAddon (Join-Path $Target (Split-Path -Leaf $OutAddon)) -ErrorAction Stop
             Write-Host "Deployed to $Target"
         } catch {

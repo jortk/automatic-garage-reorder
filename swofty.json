@@ -4,7 +4,7 @@
   "name": "Automatic Garage Order",
   "version": "1.1.0",
   "author": "jor",
-  "description": "Reorders the pitlane garages in Career Mode and Grand Prix each season according to Constructors' Championship merit.",
+  "description": "Reorders the pitlane garages in Career Mode each season according to Constructors' Championship merit.",
   "license": "MIT",
   "category": "career",
   "repository": "",
@@ -27,16 +27,11 @@
   ],
   "options": [
     {
-      "id": "garage_order_mode",
-      "type": "choice",
-      "label": "Pitlane Garage Order",
-      "description": "Choose how pitlane garages are assigned: Championship standings (merit), Inverted (P1 gets last garage), or Randomized.",
-      "default": "standings",
-      "values": [
-        { "value": "standings", "label": "Championship standings" },
-        { "value": "reverse", "label": "Inverted standings" },
-        { "value": "random", "label": "Randomized" }
-      ],
+      "id": "enabled",
+      "type": "toggle",
+      "label": "Enable mod",
+      "description": "Enable or disable automatic pitlane garage reordering.",
+      "default": true,
       "binds": "native"
     },
     {
@@ -48,18 +43,10 @@
       "binds": "native"
     },
     {
-      "id": "apply_in_grand_prix",
-      "type": "toggle",
-      "label": "Apply in Grand Prix",
-      "description": "Apply pitlane garage reordering in Grand Prix mode as well as Career Mode.",
-      "default": true,
-      "binds": "native"
-    },
-    {
       "id": "reverse_order",
       "type": "toggle",
-      "label": "Legacy: Reverse order",
-      "description": "Legacy toggle: Inverts the pitlane garage order (equivalent to selecting Inverted standings).",
+      "label": "Reverse garage order",
+      "description": "Inverts the pitlane garage order (the reigning champion takes the last garage).",
       "default": false,
       "binds": "native"
     },

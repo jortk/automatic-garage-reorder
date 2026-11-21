@@ -74,29 +74,6 @@ void test_reverse_order()
     assert(result[2] == make_team_key(10));
 }
 
-void test_random_order()
-{
-    std::vector<uint32_t> session_entrants = {
-        make_team_key(1), make_team_key(2), make_team_key(3),
-        make_team_key(4), make_team_key(5), make_team_key(6),
-    };
-    std::vector<uint32_t> prev_standings = {
-        make_team_key(1), make_team_key(2), make_team_key(3),
-        make_team_key(4), make_team_key(5), make_team_key(6),
-    };
-    auto result = build_team_order(session_entrants, prev_standings, {}, 10, false, 0x1337c0de);
-    assert(result.size() == 6);
-    // Should be shuffled and not strictly equal to ordered
-    bool different = false;
-    for (size_t i = 0; i < 6; ++i) {
-        if (result[i] != prev_standings[i]) {
-            different = true;
-            break;
-        }
-    }
-    assert(different);
-}
-
 void test_realistic_constructor_baseline()
 {
     auto base = realistic_constructor_baseline_order();
@@ -214,7 +191,6 @@ int main()
     test_season2_reorders_by_previous_constructor_standings();
     test_garage_count_clamping_prevents_oob();
     test_reverse_order();
-    test_random_order();
     test_realistic_constructor_baseline();
     test_sort_team_standings_tiebreakers();
     test_team_id_0_is_placed_on_2025_data();
