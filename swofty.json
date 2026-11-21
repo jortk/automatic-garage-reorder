@@ -2,12 +2,12 @@
   "schema_version": 1,
   "id": "jortk.automatic-garage-reorder",
   "name": "Automatic Garage Order",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "jor",
-  "description": "Reorders the pitlane garages in Career Mode each season according to Constructors' Championship merit.",
+  "description": "Reorders the pitlane garages in Career Mode each season according to the result of the previous season.",
   "license": "MIT",
   "category": "career",
-  "repository": "",
+  "repository": "https://github.com/jortk/automatic-garage-reorder",
   "icon": "icons/pitlane.png",
   "kind": [
     "native"
